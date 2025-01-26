@@ -31,6 +31,9 @@ const createHttpsServer = () => {
 
 // -----start server ------
 const startServer = (server: http.Server | https.Server) => {
+    if(!SERVER_PORT|| !SERVER_HOST|| ! SERVER_PROTOCOL){
+        throw new Error("SERVER_PORT, SERVER_HOST, SERVER_PROTOCOL must be defined")
+    }
     server.listen(SERVER_PORT, () => {
         const url = `${SERVER_PROTOCOL}://${SERVER_HOST}:${SERVER_PORT}`;
         logger.info(`Server is now running on ${gach(url).color('lightBlue').bold().text} in ${NODE_ENV} mode`);
