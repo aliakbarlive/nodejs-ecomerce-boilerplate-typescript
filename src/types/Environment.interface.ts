@@ -15,6 +15,7 @@ export interface EnvironmentInterface {
     readonly SERVER_PORT: number
     readonly LOGGER_HOST: string
     readonly LOGGER_PORT: number
+    readonly MONGO_URI: string
     readonly REDIS_HOST?: string
     readonly REDIS_PORT?: number
     readonly REDIS_PASS?: string

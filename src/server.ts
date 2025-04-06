@@ -7,6 +7,8 @@ import gach from 'gach'
 import app from './app'
 import { config } from './config'
 import { logger } from './utils'
+import { connectDB } from './config/db'
+import { applySecurityMiddleware } from './config/securityMiddleware'
 
 const { NODE_ENV, SERVER_PROTOCOL, SERVER_HOST, SERVER_PORT } = config.env
 
@@ -40,10 +42,13 @@ const startServer = (server: http.Server | https.Server) => {
     });
 };
 
-const initServer = () => {
+const initServer = async () => {
     try {
+        // apply security middleware
+        applySecurityMiddleware(app);
+        // connect to the database
+        await connectDB();
         const server = SERVER_PROTOCOL === 'http' ? createHttpServer() : createHttpsServer();
-        //  dbConnect()
         startServer(server);
     } catch (error) {
         throw Error(`>>>>> Server Connection Error: ${error}`)

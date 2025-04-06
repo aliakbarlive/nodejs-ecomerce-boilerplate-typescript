@@ -6,10 +6,10 @@ import apiLog from "./utils/helpers/apiLog";
 const app: Application = express();
 
 // Use Middle-wares
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json());
-app.use(helmet());
-app.use(cors());
+// app.use(express.urlencoded({ extended: true }))
+// app.use(express.json());
+// app.use(helmet());
+// app.use(cors());
 
 // API's logger
 app.use(apiLog)
