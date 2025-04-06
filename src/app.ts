@@ -1,5 +1,3 @@
-import helmet from "helmet";
-import cors from "cors";
 import express, { Request, Response, Application, NextFunction } from 'express';
 import apiLog from "./utils/helpers/apiLog";
 
